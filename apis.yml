@@ -1,0 +1,61 @@
+aid: airvisual
+name: IQAir AirVisual
+description: IQAir AirVisual provides a real-time air quality REST API delivering PM2.5, PM10, AQI, weather data, and pollution forecasts for cities and GPS coordinates worldwide. The API aggregates data from over 80,000 ground-based sensors, satellite sources, and regulatory monitors, validated with AI-driven machine learning.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Air Quality
+  - AQI
+  - PM2.5
+  - Weather
+  - Pollution
+  - Environmental Data
+  - Real-Time Data
+apis:
+  - name: IQAir AirVisual API
+    description: RESTful API providing real-time and forecast air quality data including AQI, PM2.5, PM10, SO2, NO2, O3, CO, and weather metrics for cities and GPS coordinates worldwide.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.iqair.com/us/air-pollution-data-api
+    baseURL: https://api.airvisual.com/v2
+    tags:
+      - Air Quality
+      - AQI
+      - PM2.5
+      - Weather
+      - Pollution
+    properties:
+      - type: Documentation
+        url: https://api-docs.iqair.com/
+      - type: Authentication
+        url: https://www.iqair.com/support/knowledge-base/access-airvisuals-aqi-air-quality-and-pollution-api
+      - type: Plans
+        url: https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/plans/airvisual-plans-pricing.yml
+      - type: RateLimits
+        url: https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/rate-limits/airvisual-rate-limits.yml
+      - type: FinOps
+        url: https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/finops/airvisual-finops.yml
+common:
+  - type: Website
+    url: https://www.iqair.com/us/air-pollution-data-api
+  - type: Documentation
+    url: https://api-docs.iqair.com/
+  - type: Pricing
+    url: https://www.iqair.com/us/air-pollution-data-api
+  - type: Blog
+    url: https://www.iqair.com/newsroom
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/the-iqair-group/
+  - type: X
+    url: https://x.com/IQAir
+  - type: Plans
+    url: plans/airvisual-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/airvisual-rate-limits.yml
+  - type: FinOps
+    url: finops/airvisual-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

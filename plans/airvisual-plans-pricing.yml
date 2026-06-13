@@ -1,0 +1,67 @@
+name: IQAir AirVisual API Plans and Pricing
+description: Subscription plans for the IQAir AirVisual air quality data API, covering real-time AQI, weather, pollution, and forecast data worldwide.
+url: https://www.iqair.com/us/air-pollution-data-api
+plans:
+  - name: Community
+    description: Free tier for developers and personal projects with city-level air quality data.
+    url: https://www.iqair.com/us/air-pollution-data-api
+    price:
+      value: 0
+      currency: USD
+      unit: month
+    features:
+      - City-level air quality data
+      - Overall AQI (US AQI and China AQI)
+      - Real-time weather data
+      - API key via dashboard
+    rateLimits:
+      - calls: 5
+        period: minute
+      - calls: 500
+        period: day
+      - calls: 10000
+        period: month
+  - name: Startup
+    description: Paid subscription for startups and growing applications needing station-level data and pollutant concentrations.
+    url: https://www.iqair.com/us/air-pollution-data-api
+    price:
+      value: 399
+      currency: USD
+      unit: month
+      notes: Monthly and annual billing available; contact sales for exact pricing.
+    features:
+      - City-level and station-level data
+      - Overall AQI (US AQI and China AQI)
+      - Real-time weather data
+      - Pollutant concentrations (PM2.5, PM10, SO2, NO2, O3, CO)
+    rateLimits:
+      - calls: 100
+        period: minute
+      - calls: 100000
+        period: day
+      - calls: 1000000
+        period: month
+  - name: Enterprise
+    description: High-volume enterprise plan with forecast data, historical data, and the highest rate limits.
+    url: https://www.iqair.com/us/air-pollution-data-api
+    price:
+      value: 999
+      currency: USD
+      unit: month
+      notes: Monthly and annual billing available; contact sales for exact pricing.
+    features:
+      - City-level and station-level data
+      - Overall AQI (US AQI and China AQI)
+      - Real-time weather data
+      - Pollutant concentrations (PM2.5, PM10, SO2, NO2, O3, CO)
+      - 7-day daily AQI forecast
+      - 3-day detailed AQI forecast
+      - 7-day weather forecast
+      - 48-hour historical air quality data
+    rateLimits:
+      - calls: 1000
+        period: minute
+      - calls: 1000000
+        period: day
+      - calls: 10000000
+        period: month

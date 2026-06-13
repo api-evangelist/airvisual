@@ -1,0 +1,33 @@
+name: IQAir AirVisual API FinOps
+description: Financial operations guidance for managing costs and usage of the IQAir AirVisual air quality API.
+url: https://www.iqair.com/us/air-pollution-data-api
+tiers:
+  - name: Community
+    monthlyCost: 0
+    currency: USD
+    callsPerMonth: 10000
+    costPerCall: 0
+    notes: Free forever for personal use and prototyping; no credit card required.
+  - name: Startup
+    monthlyCost: 399
+    currency: USD
+    callsPerMonth: 1000000
+    costPerCall: 0.000399
+    notes: Approximate pricing based on publicly reported figures; confirm with IQAir sales.
+  - name: Enterprise
+    monthlyCost: 999
+    currency: USD
+    callsPerMonth: 10000000
+    costPerCall: 0.0000999
+    notes: Approximate pricing based on publicly reported figures; confirm with IQAir sales for volume discounts and annual billing options.
+costOptimization:
+  - tip: Cache API responses for static city/country lookups to reduce redundant calls.
+  - tip: Use the nearest supported city rather than GPS coordinates where precision is not critical to stay on lower tiers.
+  - tip: Request only the data fields you need and batch geolocation lookups where possible.
+  - tip: Monitor daily usage via the IQAir dashboard to avoid overage surprises before month-end.
+  - tip: Consider annual billing for Startup and Enterprise plans, which typically offer a discount over monthly billing.
+  - tip: Start on the Community plan for development and testing before upgrading to a paid tier for production.
+billing:
+  - Monthly and annual subscription billing available for Startup and Enterprise plans.
+  - No usage-based overage charges; requests are capped at plan limits.
+  - API usage metrics (call count, plan type, expiration) visible in the IQAir dashboard.

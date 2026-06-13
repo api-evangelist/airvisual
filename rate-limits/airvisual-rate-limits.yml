@@ -1,0 +1,44 @@
+name: IQAir AirVisual API Rate Limits
+description: Rate limits for the IQAir AirVisual API by subscription plan tier.
+url: https://www.iqair.com/us/air-pollution-data-api
+rateLimits:
+  - plan: Community
+    description: Free tier rate limits for city-level data access.
+    limits:
+      - type: requests
+        period: minute
+        value: 5
+      - type: requests
+        period: day
+        value: 500
+      - type: requests
+        period: month
+        value: 10000
+  - plan: Startup
+    description: Paid startup tier rate limits for city and station-level data with pollutant concentrations.
+    limits:
+      - type: requests
+        period: minute
+        value: 100
+      - type: requests
+        period: day
+        value: 100000
+      - type: requests
+        period: month
+        value: 1000000
+  - plan: Enterprise
+    description: Enterprise tier rate limits for full feature access including forecasts and historical data.
+    limits:
+      - type: requests
+        period: minute
+        value: 1000
+      - type: requests
+        period: day
+        value: 1000000
+      - type: requests
+        period: month
+        value: 10000000
+notes:
+  - Requests exceeding plan limits will return HTTP 429 Too Many Requests.
+  - API keys are managed via the IQAir dashboard at https://dashboard.iqair.com/
+  - Contact IQAir sales for custom enterprise limits above standard tiers.
