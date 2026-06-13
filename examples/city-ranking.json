@@ -1,0 +1,43 @@
+{
+  "title": "City Air Quality Ranking",
+  "description": "Example request and response for retrieving cities ranked from highest to lowest AQI worldwide.",
+  "request": {
+    "method": "GET",
+    "url": "https://api.airvisual.com/v2/city_ranking?key=YOUR_API_KEY"
+  },
+  "response": {
+    "status": "success",
+    "data": [
+      {
+        "city": "Lahore",
+        "state": "Punjab",
+        "country": "Pakistan",
+        "ranking": { "current_aqi": 312, "current_aqi_cn": 248 }
+      },
+      {
+        "city": "Delhi",
+        "state": "Delhi",
+        "country": "India",
+        "ranking": { "current_aqi": 287, "current_aqi_cn": 213 }
+      },
+      {
+        "city": "Dhaka",
+        "state": "Dhaka",
+        "country": "Bangladesh",
+        "ranking": { "current_aqi": 241, "current_aqi_cn": 187 }
+      },
+      {
+        "city": "Beijing",
+        "state": "Beijing",
+        "country": "China",
+        "ranking": { "current_aqi": 178, "current_aqi_cn": 142 }
+      },
+      {
+        "city": "Bangkok",
+        "state": "Bangkok",
+        "country": "Thailand",
+        "ranking": { "current_aqi": 156, "current_aqi_cn": 119 }
+      }
+    ]
+  }
+}

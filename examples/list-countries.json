@@ -1,0 +1,47 @@
+{
+  "title": "List Supported Countries",
+  "description": "Example request and response for listing all countries supported by the AirVisual API.",
+  "request": {
+    "method": "GET",
+    "url": "https://api.airvisual.com/v2/countries?key=YOUR_API_KEY"
+  },
+  "response": {
+    "status": "success",
+    "data": [
+      { "country": "Afghanistan" },
+      { "country": "Albania" },
+      { "country": "Algeria" },
+      { "country": "Argentina" },
+      { "country": "Australia" },
+      { "country": "Austria" },
+      { "country": "Bangladesh" },
+      { "country": "Belgium" },
+      { "country": "Brazil" },
+      { "country": "Canada" },
+      { "country": "Chile" },
+      { "country": "China" },
+      { "country": "Colombia" },
+      { "country": "Egypt" },
+      { "country": "France" },
+      { "country": "Germany" },
+      { "country": "India" },
+      { "country": "Indonesia" },
+      { "country": "Iran" },
+      { "country": "Italy" },
+      { "country": "Japan" },
+      { "country": "Mexico" },
+      { "country": "Netherlands" },
+      { "country": "Pakistan" },
+      { "country": "Poland" },
+      { "country": "Russia" },
+      { "country": "Saudi Arabia" },
+      { "country": "South Korea" },
+      { "country": "Spain" },
+      { "country": "Thailand" },
+      { "country": "Turkey" },
+      { "country": "USA" },
+      { "country": "United Kingdom" },
+      { "country": "Vietnam" }
+    ]
+  }
+}

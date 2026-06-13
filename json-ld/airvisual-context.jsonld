@@ -1,0 +1,63 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "airvisual": "https://raw.githubusercontent.com/api-evangelist/airvisual/main/json-ld/",
+    "aqius": "airvisual:aqius",
+    "aqicn": "airvisual:aqicn",
+    "mainus": "airvisual:mainus",
+    "maincn": "airvisual:maincn",
+    "p2": "airvisual:pm25",
+    "p1": "airvisual:pm10",
+    "o3": "airvisual:ozone",
+    "n2": "airvisual:no2",
+    "s2": "airvisual:so2",
+    "co": "airvisual:co",
+    "conc": "airvisual:concentration",
+    "tp": "airvisual:temperature",
+    "tp_min": "airvisual:temperatureMin",
+    "pr": "airvisual:atmosphericPressure",
+    "hu": "airvisual:humidity",
+    "ws": "airvisual:windSpeed",
+    "wd": "airvisual:windDirection",
+    "ic": "airvisual:weatherIcon",
+    "ts": {
+      "@id": "airvisual:timestamp",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "city": "schema:addressLocality",
+    "state": "schema:addressRegion",
+    "country": "schema:addressCountry",
+    "location": "schema:geo",
+    "current": "airvisual:currentConditions",
+    "weather": "airvisual:weather",
+    "pollution": "airvisual:pollution",
+    "forecasts": "airvisual:forecasts",
+    "history": "airvisual:history",
+    "station": "airvisual:monitoringStation",
+    "ranking": "airvisual:cityRanking",
+    "current_aqi": "airvisual:currentAqiUs",
+    "current_aqi_cn": "airvisual:currentAqiCn",
+    "status": "airvisual:responseStatus",
+    "data": "airvisual:responseData"
+  },
+  "@graph": [
+    {
+      "@id": "airvisual:AirQualityData",
+      "@type": "rdfs:Class",
+      "rdfs:label": "AirQualityData",
+      "rdfs:comment": "Real-time or forecast air quality measurements including AQI, PM2.5, PM10, ozone, NO2, SO2, and CO data from IQAir AirVisual API."
+    },
+    {
+      "@id": "airvisual:WeatherData",
+      "@type": "rdfs:Class",
+      "rdfs:label": "WeatherData",
+      "rdfs:comment": "Current or forecast meteorological data including temperature, pressure, humidity, and wind from IQAir AirVisual API."
+    },
+    {
+      "@id": "airvisual:MonitoringStation",
+      "@type": "rdfs:Class",
+      "rdfs:label": "MonitoringStation",
+      "rdfs:comment": "An air quality monitoring station tracked by IQAir AirVisual, representing a physical sensor or regulatory monitor."
+    }
+  ]
+}

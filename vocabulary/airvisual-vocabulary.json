@@ -1,0 +1,125 @@
+{
+  "title": "IQAir AirVisual API Vocabulary",
+  "description": "Domain vocabulary and terminology used by the IQAir AirVisual air quality API.",
+  "terms": [
+    {
+      "term": "AQI",
+      "label": "Air Quality Index",
+      "definition": "A standardized index that communicates how clean or polluted the air is and what associated health effects might be a concern. Higher values indicate worse air quality.",
+      "variants": ["aqius", "aqicn"]
+    },
+    {
+      "term": "aqius",
+      "label": "AQI US",
+      "definition": "Air Quality Index value calculated using the US EPA standard. Scale: 0-50 Good, 51-100 Moderate, 101-150 Unhealthy for Sensitive Groups, 151-200 Unhealthy, 201-300 Very Unhealthy, 301-500 Hazardous.",
+      "standard": "US EPA"
+    },
+    {
+      "term": "aqicn",
+      "label": "AQI China",
+      "definition": "Air Quality Index value calculated using the China Ministry of Ecology and Environment (MEP) standard.",
+      "standard": "China MEP"
+    },
+    {
+      "term": "mainus",
+      "label": "Main US Pollutant",
+      "definition": "The primary pollutant driving the US AQI value at a given time.",
+      "values": {
+        "p2": "PM2.5 - Fine particulate matter (diameter <= 2.5 micrometers)",
+        "p1": "PM10 - Coarse particulate matter (diameter <= 10 micrometers)",
+        "o3": "Ozone (O3)",
+        "n2": "Nitrogen dioxide (NO2)",
+        "s2": "Sulfur dioxide (SO2)",
+        "co": "Carbon monoxide (CO)"
+      }
+    },
+    {
+      "term": "p2",
+      "label": "PM2.5",
+      "definition": "Fine inhalable particles with diameters 2.5 micrometers and smaller. A primary air quality concern due to ability to penetrate deep into the lungs.",
+      "unit": "micrograms per cubic meter (μg/m³)"
+    },
+    {
+      "term": "p1",
+      "label": "PM10",
+      "definition": "Inhalable particles with diameters 10 micrometers and smaller, including dust, pollen, and mold.",
+      "unit": "micrograms per cubic meter (μg/m³)"
+    },
+    {
+      "term": "o3",
+      "label": "Ozone",
+      "definition": "Ground-level ozone (O3), a secondary pollutant formed by chemical reactions between NOx and VOCs in the presence of sunlight.",
+      "unit": "micrograms per cubic meter (μg/m³)"
+    },
+    {
+      "term": "n2",
+      "label": "Nitrogen Dioxide",
+      "definition": "NO2 is a gaseous air pollutant produced by combustion of fuels. Contributes to the formation of smog and acid rain.",
+      "unit": "micrograms per cubic meter (μg/m³)"
+    },
+    {
+      "term": "s2",
+      "label": "Sulfur Dioxide",
+      "definition": "SO2 is produced by burning fossil fuels and smelting mineral ores that contain sulfur. Can cause respiratory problems.",
+      "unit": "micrograms per cubic meter (μg/m³)"
+    },
+    {
+      "term": "co",
+      "label": "Carbon Monoxide",
+      "definition": "CO is a colorless, odorless gas produced by incomplete combustion of carbon-containing fuels.",
+      "unit": "milligrams per cubic meter (mg/m³)"
+    },
+    {
+      "term": "conc",
+      "label": "Concentration",
+      "definition": "The measured concentration of a pollutant in the air at a given time and location."
+    },
+    {
+      "term": "tp",
+      "label": "Temperature",
+      "definition": "Current air temperature.",
+      "unit": "Celsius (°C)"
+    },
+    {
+      "term": "pr",
+      "label": "Atmospheric Pressure",
+      "definition": "Atmospheric pressure at the measurement location.",
+      "unit": "Hectopascals (hPa)"
+    },
+    {
+      "term": "hu",
+      "label": "Humidity",
+      "definition": "Relative humidity expressed as a percentage.",
+      "unit": "Percentage (%)"
+    },
+    {
+      "term": "ws",
+      "label": "Wind Speed",
+      "definition": "Current wind speed at the measurement location.",
+      "unit": "Meters per second (m/s)"
+    },
+    {
+      "term": "wd",
+      "label": "Wind Direction",
+      "definition": "Wind direction expressed as an angle in degrees. North=0°, East=90°, South=180°, West=270°.",
+      "unit": "Degrees (°)"
+    },
+    {
+      "term": "ic",
+      "label": "Weather Icon",
+      "definition": "Weather icon code representing the current sky condition (e.g., 01d = clear sky day, 02d = few clouds day, 09d = shower rain, 10d = rain, 11d = thunderstorm, 13d = snow, 50d = mist)."
+    },
+    {
+      "term": "ts",
+      "label": "Timestamp",
+      "definition": "ISO 8601 date-time string indicating when the measurement was recorded.",
+      "format": "date-time (ISO 8601)"
+    },
+    {
+      "term": "tp_min",
+      "label": "Minimum Temperature",
+      "definition": "Minimum forecasted temperature for a forecast period.",
+      "unit": "Celsius (°C)"
+    }
+  ]
+}

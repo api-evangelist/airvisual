@@ -1,0 +1,44 @@
+{
+  "title": "Get City Air Quality Data",
+  "description": "Example request and response for retrieving air quality and weather data for Los Angeles, California, USA.",
+  "request": {
+    "method": "GET",
+    "url": "https://api.airvisual.com/v2/city?city=Los%20Angeles&state=California&country=USA&key=YOUR_API_KEY"
+  },
+  "response": {
+    "status": "success",
+    "data": {
+      "city": "Los Angeles",
+      "state": "California",
+      "country": "USA",
+      "location": {
+        "type": "Point",
+        "coordinates": [-118.2437, 34.0522]
+      },
+      "current": {
+        "weather": {
+          "ts": "2026-06-13T14:00:00.000Z",
+          "tp": 24,
+          "pr": 1013,
+          "hu": 58,
+          "ws": 3.1,
+          "wd": 270,
+          "ic": "01d"
+        },
+        "pollution": {
+          "ts": "2026-06-13T14:00:00.000Z",
+          "aqius": 42,
+          "mainus": "p2",
+          "aqicn": 15,
+          "maincn": "p2",
+          "p2": { "conc": 8.9, "aqius": 37, "aqicn": 11 },
+          "p1": { "conc": 14.2, "aqius": 13, "aqicn": 5 },
+          "o3": { "conc": 52.4, "aqius": 42, "aqicn": 15 },
+          "n2": { "conc": 18.1, "aqius": 7, "aqicn": 2 },
+          "s2": { "conc": 0.5, "aqius": 1, "aqicn": 0 },
+          "co": { "conc": 0.3, "aqius": 3, "aqicn": 1 }
+        }
+      }
+    }
+  }
+}

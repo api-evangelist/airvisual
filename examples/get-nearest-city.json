@@ -1,0 +1,39 @@
+{
+  "title": "Get Nearest City Air Quality by GPS",
+  "description": "Example request and response for retrieving air quality data for the nearest city to given GPS coordinates.",
+  "request": {
+    "method": "GET",
+    "url": "https://api.airvisual.com/v2/nearest_city?lat=34.0522&lon=-118.2437&key=YOUR_API_KEY"
+  },
+  "response": {
+    "status": "success",
+    "data": {
+      "city": "Los Angeles",
+      "state": "California",
+      "country": "USA",
+      "location": {
+        "type": "Point",
+        "coordinates": [-118.2437, 34.0522]
+      },
+      "current": {
+        "weather": {
+          "ts": "2026-06-13T14:00:00.000Z",
+          "tp": 24,
+          "pr": 1013,
+          "hu": 58,
+          "ws": 3.1,
+          "wd": 270,
+          "ic": "01d"
+        },
+        "pollution": {
+          "ts": "2026-06-13T14:00:00.000Z",
+          "aqius": 42,
+          "mainus": "p2",
+          "aqicn": 15,
+          "maincn": "p2",
+          "p2": { "conc": 8.9, "aqius": 37, "aqicn": 11 }
+        }
+      }
+    }
+  }
+}

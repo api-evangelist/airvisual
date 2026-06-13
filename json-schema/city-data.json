@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/airvisual/main/json-schema/city-data.json",
+  "title": "CityData",
+  "description": "Air quality and weather data for a city returned by the IQAir AirVisual API.",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "Response status",
+      "example": "success"
+    },
+    "data": {
+      "type": "object",
+      "description": "City air quality and weather payload",
+      "properties": {
+        "city": { "type": "string", "description": "City name" },
+        "state": { "type": "string", "description": "State name" },
+        "country": { "type": "string", "description": "Country name" },
+        "location": {
+          "type": "object",
+          "description": "GeoJSON Point location",
+          "properties": {
+            "type": { "type": "string", "example": "Point" },
+            "coordinates": {
+              "type": "array",
+              "items": { "type": "number" },
+              "description": "Longitude and latitude",
+              "example": [-118.2437, 34.0522]
+            }
+          }
+        },
+        "current": {
+          "type": "object",
+          "description": "Current conditions",
+          "properties": {
+            "weather": { "$ref": "#/definitions/Weather" },
+            "pollution": { "$ref": "#/definitions/Pollution" }
+          }
+        },
+        "forecasts": {
+          "type": "array",
+          "description": "Forecast data points",
+          "items": { "$ref": "#/definitions/Forecast" }
+        },
+        "history": {
+          "type": "object",
+          "description": "Historical data",
+          "properties": {
+            "weather": { "type": "array", "items": { "$ref": "#/definitions/Weather" } },
+            "pollution": { "type": "array", "items": { "$ref": "#/definitions/Pollution" } }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Weather": {
+      "type": "object",
+      "properties": {
+        "ts": { "type": "string", "format": "date-time", "description": "Timestamp" },
+        "tp": { "type": "number", "description": "Temperature in Celsius" },
+        "pr": { "type": "number", "description": "Atmospheric pressure in hPa" },
+        "hu": { "type": "number", "description": "Humidity percentage" },
+        "ws": { "type": "number", "description": "Wind speed in m/s" },
+        "wd": { "type": "number", "description": "Wind direction as angle" },
+        "ic": { "type": "string", "description": "Weather icon code" }
+      }
+    },
+    "Pollution": {
+      "type": "object",
+      "properties": {
+        "ts": { "type": "string", "format": "date-time", "description": "Timestamp" },
+        "aqius": { "type": "integer", "description": "AQI based on US EPA standard" },
+        "mainus": { "type": "string", "description": "Main pollutant for US AQI (p2, p1, o3, n2, s2, co)" },
+        "aqicn": { "type": "integer", "description": "AQI based on China MEP standard" },
+        "maincn": { "type": "string", "description": "Main pollutant for Chinese AQI" },
+        "p2": { "$ref": "#/definitions/PollutantUnit" },
+        "p1": { "$ref": "#/definitions/PollutantUnit" },
+        "o3": { "$ref": "#/definitions/PollutantUnit" },
+        "n2": { "$ref": "#/definitions/PollutantUnit" },
+        "s2": { "$ref": "#/definitions/PollutantUnit" },
+        "co": { "$ref": "#/definitions/PollutantUnit" }
+      }
+    },
+    "PollutantUnit": {
+      "type": "object",
+      "properties": {
+        "conc": { "type": "number", "description": "Pollutant concentration" },
+        "aqius": { "type": "integer", "description": "AQI based on US EPA standard" },
+        "aqicn": { "type": "integer", "description": "AQI based on China MEP standard" }
+      }
+    },
+    "Forecast": {
+      "type": "object",
+      "properties": {
+        "ts": { "type": "string", "format": "date-time", "description": "Timestamp" },
+        "aqius": { "type": "integer", "description": "Forecast AQI (US EPA)" },
+        "aqicn": { "type": "integer", "description": "Forecast AQI (China MEP)" },
+        "tp": { "type": "number", "description": "Temperature in Celsius" },
+        "tp_min": { "type": "number", "description": "Minimum temperature in Celsius" },
+        "pr": { "type": "number", "description": "Atmospheric pressure in hPa" },
+        "hu": { "type": "number", "description": "Humidity percentage" },
+        "ws": { "type": "number", "description": "Wind speed in m/s" },
+        "wd": { "type": "number", "description": "Wind direction as angle" },
+        "ic": { "type": "string", "description": "Weather icon code" }
+      }
+    }
+  }
+}
