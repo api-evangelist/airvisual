@@ -2,10 +2,13 @@
   "repo": "airvisual",
   "feeds": [
     {
-      "source": "https://www.iqair.com/us/air-pollution-data-api",
-      "error": "HTTPError"
+      "source": "https://www.iqair.com/newsroom",
+      "feed_url": "https://www.iqair.com/newsroom",
+      "title": "IQAir Newsroom",
+      "saved": 8,
+      "note": "No RSS/Atom feed found; scraped HTML newsroom page for post links, fetched each post for dates and summaries."
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 8,
+  "fetched": "2026-06-21T17:00:00Z"
 }
