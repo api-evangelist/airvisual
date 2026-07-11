@@ -40,6 +40,10 @@ apis:
       - type: FinOps
         url: https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/finops/airvisual-finops.yml
 common:
+  - type: DomainSecurity
+    url: security/airvisual-domain-security.yml
+  - type: Authentication
+    url: authentication/airvisual-authentication.yml
   - type: Website
     url: https://www.iqair.com/us/air-pollution-data-api
   - type: Documentation
