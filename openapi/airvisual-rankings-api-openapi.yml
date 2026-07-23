@@ -1,0 +1,102 @@
+openapi: 3.0.3
+info:
+  title: IQAir AirVisual Cities Rankings API
+  description: The IQAir AirVisual API provides real-time and forecast air quality and weather data worldwide. It offers endpoints for listing supported countries, states, and cities, retrieving air quality data for specific locations or nearest stations, and ranking cities by air quality index.
+  version: 2.0.0
+  contact:
+    name: IQAir
+    url: https://www.iqair.com
+servers:
+- url: https://api.airvisual.com/v2
+  description: IQAir AirVisual API v2
+security:
+- apiKey: []
+tags:
+- name: Rankings
+  description: City air quality rankings
+paths:
+  /city_ranking:
+    get:
+      tags:
+      - Rankings
+      summary: Get city air quality ranking
+      description: Returns a sorted array of major cities worldwide ranked from highest to lowest AQI.
+      operationId: getCityRanking
+      parameters:
+      - name: key
+        in: query
+        required: true
+        description: Your API key
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CityRankingResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: fail
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              description: Error message
+    CityRankingResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              city:
+                type: string
+              state:
+                type: string
+              country:
+                type: string
+              ranking:
+                type: object
+                properties:
+                  current_aqi:
+                    type: integer
+                    description: Current AQI based on US EPA standard
+                  current_aqi_cn:
+                    type: integer
+                    description: Current AQI based on China MEP standard
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: query
+      name: key
+      description: API key passed as a query parameter.

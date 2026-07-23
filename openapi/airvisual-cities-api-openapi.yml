@@ -1,0 +1,383 @@
+openapi: 3.0.3
+info:
+  title: IQAir AirVisual Cities API
+  description: The IQAir AirVisual API provides real-time and forecast air quality and weather data worldwide. It offers endpoints for listing supported countries, states, and cities, retrieving air quality data for specific locations or nearest stations, and ranking cities by air quality index.
+  version: 2.0.0
+  contact:
+    name: IQAir
+    url: https://www.iqair.com
+servers:
+- url: https://api.airvisual.com/v2
+  description: IQAir AirVisual API v2
+security:
+- apiKey: []
+tags:
+- name: Cities
+  description: List supported cities and retrieve city air quality data
+paths:
+  /cities:
+    get:
+      tags:
+      - Cities
+      summary: List supported cities
+      description: Returns a list of all supported cities within a specified state and country.
+      operationId: listCities
+      parameters:
+      - name: key
+        in: query
+        required: true
+        description: Your API key
+        schema:
+          type: string
+      - name: state
+        in: query
+        required: true
+        description: State name
+        schema:
+          type: string
+        example: California
+      - name: country
+        in: query
+        required: true
+        description: Country name
+        schema:
+          type: string
+        example: USA
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CitiesResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /city:
+    get:
+      tags:
+      - Cities
+      summary: Get city air quality data
+      description: Returns air quality and weather data for a specified city, including current conditions, forecasts, and history.
+      operationId: getCity
+      parameters:
+      - name: key
+        in: query
+        required: true
+        description: Your API key
+        schema:
+          type: string
+      - name: city
+        in: query
+        required: true
+        description: City name
+        schema:
+          type: string
+        example: Los Angeles
+      - name: state
+        in: query
+        required: true
+        description: State name
+        schema:
+          type: string
+        example: California
+      - name: country
+        in: query
+        required: true
+        description: Country name
+        schema:
+          type: string
+        example: USA
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CityDataResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /nearest_city:
+    get:
+      tags:
+      - Cities
+      summary: Get nearest city air quality data
+      description: Returns air quality data for the nearest city based on IP geolocation or provided GPS coordinates.
+      operationId: getNearestCity
+      parameters:
+      - name: key
+        in: query
+        required: true
+        description: Your API key
+        schema:
+          type: string
+      - name: lat
+        in: query
+        required: false
+        description: Latitude coordinate. If not provided, IP-based geolocation is used.
+        schema:
+          type: number
+          format: double
+        example: 34.0522
+      - name: lon
+        in: query
+        required: false
+        description: Longitude coordinate. If not provided, IP-based geolocation is used.
+        schema:
+          type: number
+          format: double
+        example: -118.2437
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CityDataResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    CitiesResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              city:
+                type: string
+                description: City name
+    Pollution:
+      type: object
+      properties:
+        ts:
+          type: string
+          format: date-time
+          description: Timestamp
+        aqius:
+          type: integer
+          description: AQI value based on US EPA standard
+        mainus:
+          type: string
+          description: Main pollutant for US AQI (p2=PM2.5, p1=PM10, o3=Ozone, n2=NO2, s2=SO2, co=CO)
+        aqicn:
+          type: integer
+          description: AQI value based on China MEP standard
+        maincn:
+          type: string
+          description: Main pollutant for Chinese AQI
+        p2:
+          $ref: '#/components/schemas/PollutantUnit'
+        p1:
+          $ref: '#/components/schemas/PollutantUnit'
+        o3:
+          $ref: '#/components/schemas/PollutantUnit'
+        n2:
+          $ref: '#/components/schemas/PollutantUnit'
+        s2:
+          $ref: '#/components/schemas/PollutantUnit'
+        co:
+          $ref: '#/components/schemas/PollutantUnit'
+    Current:
+      type: object
+      properties:
+        weather:
+          $ref: '#/components/schemas/Weather'
+        pollution:
+          $ref: '#/components/schemas/Pollution'
+    Forecast:
+      type: object
+      properties:
+        ts:
+          type: string
+          format: date-time
+          description: Timestamp
+        aqius:
+          type: integer
+          description: AQI value based on US EPA standard
+        aqicn:
+          type: integer
+          description: AQI value based on China MEP standard
+        tp:
+          type: number
+          description: Temperature in Celsius
+        tp_min:
+          type: number
+          description: Minimum temperature in Celsius
+        pr:
+          type: number
+          description: Atmospheric pressure in hPa
+        hu:
+          type: number
+          description: Humidity percentage
+        ws:
+          type: number
+          description: Wind speed in m/s
+        wd:
+          type: number
+          description: Wind direction as angle
+        ic:
+          type: string
+          description: Weather icon code
+    CityData:
+      type: object
+      properties:
+        city:
+          type: string
+          description: City name
+        state:
+          type: string
+          description: State name
+        country:
+          type: string
+          description: Country name
+        location:
+          $ref: '#/components/schemas/GeoLocation'
+        current:
+          $ref: '#/components/schemas/Current'
+        forecasts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Forecast'
+        history:
+          type: object
+          properties:
+            weather:
+              type: array
+              items:
+                $ref: '#/components/schemas/Weather'
+            pollution:
+              type: array
+              items:
+                $ref: '#/components/schemas/Pollution'
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: fail
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              description: Error message
+    CityDataResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        data:
+          $ref: '#/components/schemas/CityData'
+    PollutantUnit:
+      type: object
+      properties:
+        conc:
+          type: number
+          description: Pollutant concentration
+        aqius:
+          type: integer
+          description: AQI value based on US EPA standard
+        aqicn:
+          type: integer
+          description: AQI value based on China MEP standard
+    Weather:
+      type: object
+      properties:
+        ts:
+          type: string
+          format: date-time
+          description: Timestamp
+        tp:
+          type: number
+          description: Temperature in Celsius
+        pr:
+          type: number
+          description: Atmospheric pressure in hPa
+        hu:
+          type: number
+          description: Humidity percentage
+        ws:
+          type: number
+          description: Wind speed in m/s
+        wd:
+          type: number
+          description: Wind direction as angle (N=0, E=90, S=180, W=270)
+        ic:
+          type: string
+          description: Weather icon code
+    GeoLocation:
+      type: object
+      properties:
+        type:
+          type: string
+          description: GeoJSON type
+          example: Point
+        coordinates:
+          type: array
+          items:
+            type: number
+            format: double
+          description: Longitude and latitude coordinates
+          example:
+          - -118.2437
+          - 34.0522
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: query
+      name: key
+      description: API key passed as a query parameter.

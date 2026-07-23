@@ -1,0 +1,90 @@
+openapi: 3.0.3
+info:
+  title: IQAir AirVisual Cities Countries API
+  description: The IQAir AirVisual API provides real-time and forecast air quality and weather data worldwide. It offers endpoints for listing supported countries, states, and cities, retrieving air quality data for specific locations or nearest stations, and ranking cities by air quality index.
+  version: 2.0.0
+  contact:
+    name: IQAir
+    url: https://www.iqair.com
+servers:
+- url: https://api.airvisual.com/v2
+  description: IQAir AirVisual API v2
+security:
+- apiKey: []
+tags:
+- name: Countries
+  description: List supported countries
+paths:
+  /countries:
+    get:
+      tags:
+      - Countries
+      summary: List supported countries
+      description: Returns a list of all countries supported by the AirVisual API.
+      operationId: listCountries
+      parameters:
+      - name: key
+        in: query
+        required: true
+        description: Your API key
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountriesResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized - Invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too many requests - Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    CountriesResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              country:
+                type: string
+                description: Country name
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: fail
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              description: Error message
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: query
+      name: key
+      description: API key passed as a query parameter.

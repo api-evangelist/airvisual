@@ -1,0 +1,97 @@
+openapi: 3.0.3
+info:
+  title: IQAir AirVisual Cities States API
+  description: The IQAir AirVisual API provides real-time and forecast air quality and weather data worldwide. It offers endpoints for listing supported countries, states, and cities, retrieving air quality data for specific locations or nearest stations, and ranking cities by air quality index.
+  version: 2.0.0
+  contact:
+    name: IQAir
+    url: https://www.iqair.com
+servers:
+- url: https://api.airvisual.com/v2
+  description: IQAir AirVisual API v2
+security:
+- apiKey: []
+tags:
+- name: States
+  description: List supported states within a country
+paths:
+  /states:
+    get:
+      tags:
+      - States
+      summary: List supported states
+      description: Returns a list of all supported states within a specified country.
+      operationId: listStates
+      parameters:
+      - name: key
+        in: query
+        required: true
+        description: Your API key
+        schema:
+          type: string
+      - name: country
+        in: query
+        required: true
+        description: Country name
+        schema:
+          type: string
+        example: USA
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatesResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    StatesResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              state:
+                type: string
+                description: State name
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: fail
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              description: Error message
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: query
+      name: key
+      description: API key passed as a query parameter.
