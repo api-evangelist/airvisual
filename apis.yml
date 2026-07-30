@@ -1,7 +1,20 @@
 aid: airvisual
 name: IQAir AirVisual
 description: IQAir AirVisual provides a real-time air quality REST API delivering PM2.5, PM10, AQI, weather data, and pollution forecasts for cities and GPS coordinates worldwide. The API aggregates data from over 80,000 ground-based sensors, satellite sources, and regulatory monitors, validated with AI-driven machine learning.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/airvisual.png
 url: https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -15,30 +28,126 @@ tags:
   - Environmental Data
   - Real-Time Data
 apis:
-  - name: IQAir AirVisual API
-    description: RESTful API providing real-time and forecast air quality data including AQI, PM2.5, PM10, SO2, NO2, O3, CO, and weather metrics for cities and GPS coordinates worldwide.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.iqair.com/us/air-pollution-data-api
-    baseURL: https://api.airvisual.com/v2
-    tags:
-      - Air Quality
-      - AQI
-      - PM2.5
-      - Weather
-      - Pollution
-    properties:
-      - type: Documentation
-        url: https://api-docs.iqair.com/
-      - type: Authentication
-        url: https://www.iqair.com/support/knowledge-base/access-airvisuals-aqi-air-quality-and-pollution-api
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/openapi/openapi.json
-      - type: Plans
-        url: https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/plans/airvisual-plans-pricing.yml
-      - type: RateLimits
-        url: https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/rate-limits/airvisual-rate-limits.yml
-      - type: FinOps
-        url: https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/finops/airvisual-finops.yml
+- aid: airvisual:airvisual-cities-api
+  name: IQAir AirVisual Cities API
+  description: List supported cities and retrieve city air quality data
+  humanURL: https://www.iqair.com/us/air-pollution-data-api
+  baseURL: https://api.airvisual.com/v2
+  tags:
+  - Cities
+  properties:
+  - type: OpenAPI
+    url: openapi/airvisual-cities-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.iqair.com/
+  - type: Authentication
+    url: >-
+      https://www.iqair.com/support/knowledge-base/access-airvisuals-aqi-air-quality-and-pollution-api
+  - type: Plans
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/plans/airvisual-plans-pricing.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/rate-limits/airvisual-rate-limits.yml
+  - type: FinOps
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/finops/airvisual-finops.yml
+- aid: airvisual:airvisual-countries-api
+  name: IQAir AirVisual Countries API
+  description: List supported countries
+  humanURL: https://www.iqair.com/us/air-pollution-data-api
+  baseURL: https://api.airvisual.com/v2
+  tags:
+  - Countries
+  properties:
+  - type: OpenAPI
+    url: openapi/airvisual-countries-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.iqair.com/
+  - type: Authentication
+    url: >-
+      https://www.iqair.com/support/knowledge-base/access-airvisuals-aqi-air-quality-and-pollution-api
+  - type: Plans
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/plans/airvisual-plans-pricing.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/rate-limits/airvisual-rate-limits.yml
+  - type: FinOps
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/finops/airvisual-finops.yml
+- aid: airvisual:airvisual-rankings-api
+  name: IQAir AirVisual Rankings API
+  description: City air quality rankings
+  humanURL: https://www.iqair.com/us/air-pollution-data-api
+  baseURL: https://api.airvisual.com/v2
+  tags:
+  - Rankings
+  properties:
+  - type: OpenAPI
+    url: openapi/airvisual-rankings-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.iqair.com/
+  - type: Authentication
+    url: >-
+      https://www.iqair.com/support/knowledge-base/access-airvisuals-aqi-air-quality-and-pollution-api
+  - type: Plans
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/plans/airvisual-plans-pricing.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/rate-limits/airvisual-rate-limits.yml
+  - type: FinOps
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/finops/airvisual-finops.yml
+- aid: airvisual:airvisual-states-api
+  name: IQAir AirVisual States API
+  description: List supported states within a country
+  humanURL: https://www.iqair.com/us/air-pollution-data-api
+  baseURL: https://api.airvisual.com/v2
+  tags:
+  - States
+  properties:
+  - type: OpenAPI
+    url: openapi/airvisual-states-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.iqair.com/
+  - type: Authentication
+    url: >-
+      https://www.iqair.com/support/knowledge-base/access-airvisuals-aqi-air-quality-and-pollution-api
+  - type: Plans
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/plans/airvisual-plans-pricing.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/rate-limits/airvisual-rate-limits.yml
+  - type: FinOps
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/finops/airvisual-finops.yml
+- aid: airvisual:airvisual-stations-api
+  name: IQAir AirVisual Stations API
+  description: List monitoring stations and retrieve station data
+  humanURL: https://www.iqair.com/us/air-pollution-data-api
+  baseURL: https://api.airvisual.com/v2
+  tags:
+  - Stations
+  properties:
+  - type: OpenAPI
+    url: openapi/airvisual-stations-api-openapi.yml
+  - type: Documentation
+    url: https://api-docs.iqair.com/
+  - type: Authentication
+    url: >-
+      https://www.iqair.com/support/knowledge-base/access-airvisuals-aqi-air-quality-and-pollution-api
+  - type: Plans
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/plans/airvisual-plans-pricing.yml
+  - type: RateLimits
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/rate-limits/airvisual-rate-limits.yml
+  - type: FinOps
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/airvisual/refs/heads/main/finops/airvisual-finops.yml
 common:
   - type: AgenticAccess
     url: agentic-access/airvisual-agentic-access.yml
