@@ -1,0 +1,22 @@
+{
+  "provider": "airvisual",
+  "sources": [
+    "airvisual-cities-api-openapi.yml",
+    "airvisual-countries-api-openapi.yml",
+    "airvisual-rankings-api-openapi.yml",
+    "airvisual-states-api-openapi.yml",
+    "airvisual-stations-api-openapi.yml"
+  ],
+  "outputs": [
+    "airvisual-cities-api-openapi.yml",
+    "airvisual-countries-api-openapi.yml",
+    "airvisual-rankings-api-openapi.yml",
+    "airvisual-states-api-openapi.yml",
+    "airvisual-stations-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
