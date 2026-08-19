@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IQAir AirVisual Cities Countries API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Countries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List supported countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.airvisual.com/v2/countries",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Your API key"
+              }
+            ]
+          },
+          "docs": "Returns a list of all countries supported by the AirVisual API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

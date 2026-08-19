@@ -1,0 +1,857 @@
+{
+  "item": [
+    {
+      "id": "82b138a6-61c4-4b01-b0e6-a72ba9e4a9d4",
+      "name": "Cities",
+      "description": {
+        "content": "List supported cities and retrieve city air quality data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "99b1765c-6625-4ae1-852a-f1b587a63d87",
+          "name": "List supported cities",
+          "request": {
+            "name": "List supported cities",
+            "description": {
+              "content": "Returns a list of all supported cities within a specified state and country.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) Your API key"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "(Required) State name"
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "(Required) Country name"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "31403608-0ead-48da-a0e2-e53718d41440",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "California"
+                    },
+                    {
+                      "key": "country",
+                      "value": "USA"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"city\": \"string\"\n    },\n    {\n      \"city\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1abd02c8-6bd9-4304-87f5-44767d6c94a4",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "California"
+                    },
+                    {
+                      "key": "country",
+                      "value": "USA"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"fail\",\n  \"data\": {\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b829427e-eec1-49f1-8915-b3935c3a79e2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "California"
+                    },
+                    {
+                      "key": "country",
+                      "value": "USA"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"fail\",\n  \"data\": {\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca6b4948-1204-489c-8818-e3d7c494a176",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "California"
+                    },
+                    {
+                      "key": "country",
+                      "value": "USA"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"fail\",\n  \"data\": {\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7442f92-668f-4c57-a292-727902026773",
+          "name": "Get city air quality data",
+          "request": {
+            "name": "Get city air quality data",
+            "description": {
+              "content": "Returns air quality and weather data for a specified city, including current conditions, forecasts, and history.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "city"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) Your API key"
+                },
+                {
+                  "disabled": false,
+                  "key": "city",
+                  "value": "<string>",
+                  "description": "(Required) City name"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "(Required) State name"
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "(Required) Country name"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "385792db-4aed-4c66-b143-021a08fc36b2",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "city"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "Los Angeles"
+                    },
+                    {
+                      "key": "state",
+                      "value": "California"
+                    },
+                    {
+                      "key": "country",
+                      "value": "USA"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"country\": \"string\",\n    \"location\": {\n      \"type\": \"Point\",\n      \"coordinates\": [\n        -118.2437,\n        34.0522\n      ]\n    },\n    \"current\": {\n      \"weather\": {\n        \"ts\": \"2013-03-10T16:07:23.321Z\",\n        \"tp\": 2308.486374149149,\n        \"pr\": 3747.8924009584503,\n        \"hu\": 710.5455599633615,\n        \"ws\": 2692.3213545505896,\n        \"wd\": 609.2765347994089,\n        \"ic\": \"string\"\n      },\n      \"pollution\": {\n        \"ts\": \"2016-07-26T00:54:17.131Z\",\n        \"aqius\": 1351,\n        \"mainus\": \"string\",\n        \"aqicn\": 8277,\n        \"maincn\": \"string\",\n        \"p2\": {\n          \"conc\": 6884.431275421499,\n          \"aqius\": 4016,\n          \"aqicn\": 8020\n        },\n        \"p1\": {\n          \"conc\": 7384.517874574495,\n          \"aqius\": 9680,\n          \"aqicn\": 7431\n        },\n        \"o3\": {\n          \"conc\": 8941.52220597987,\n          \"aqius\": 5671,\n          \"aqicn\": 899\n        },\n        \"n2\": {\n          \"conc\": 3801.821071738104,\n          \"aqius\": 5706,\n          \"aqicn\": 5641\n        },\n        \"s2\": {\n          \"conc\": 5722.881162212783,\n          \"aqius\": 2480,\n          \"aqicn\": 2488\n        },\n        \"co\": {\n          \"conc\": 3887.9071807883847,\n          \"aqius\": 6725,\n          \"aqicn\": 5047\n        }\n      }\n    },\n    \"forecasts\": [\n      {\n        \"ts\": \"2001-10-02T17:44:59.980Z\",\n        \"aqius\": 1679,\n        \"aqicn\": 5111,\n        \"tp\": 3835.671066136407,\n        \"tp_min\": 6399.508931484807,\n        \"pr\": 360.39500663051285,\n        \"hu\": 6309.745881559777,\n        \"ws\": 1721.1888521891328,\n        \"wd\": 7446.908271899564,\n        \"ic\": \"string\"\n      },\n      {\n        \"ts\": \"1970-09-02T00:34:24.390Z\",\n        \"aqius\": 5142,\n        \"aqicn\": 2511,\n        \"tp\": 7764.661968407139,\n        \"tp_min\": 5316.008094439364,\n        \"pr\": 5653.109152042856,\n        \"hu\": 1748.1197270461946,\n        \"ws\": 726.919697709022,\n        \"wd\": 2920.183085952234,\n        \"ic\": \"string\"\n      }\n    ],\n    \"history\": {\n      \"weather\": [\n        {\n          \"ts\": \"2026-05-09T12:03:48.243Z\",\n          \"tp\": 6164.3951993143055,\n          \"pr\": 3373.17700136752,\n          \"hu\": 7842.785408222052,\n          \"ws\": 3008.7309091625825,\n          \"wd\": 5649.978674969607,\n          \"ic\": \"string\"\n        },\n        {\n          \"ts\": \"1969-03-04T19:38:44.256Z\",\n          \"tp\": 7719.033352421579,\n          \"pr\": 1107.3369711058256,\n          \"hu\": 9955.727983108296,\n          \"ws\": 6820.155423047652,\n          \"wd\": 5688.58751348288,\n          \"ic\": \"string\"\n        }\n      ],\n      \"pollution\": [\n        {\n          \"ts\": \"2005-07-18T23:32:16.379Z\",\n          \"aqius\": 1544,\n          \"mainus\": \"string\",\n          \"aqicn\": 7644,\n          \"maincn\": \"string\",\n          \"p2\": {\n            \"conc\": 8799.425198342422,\n            \"aqius\": 9722,\n            \"aqicn\": 9986\n          },\n          \"p1\": {\n            \"conc\": 9941.631700197095,\n            \"aqius\": 8483,\n            \"aqicn\": 3541\n          },\n          \"o3\": {\n            \"conc\": 8172.870031058853,\n            \"aqius\": 1489,\n            \"aqicn\": 6998\n          },\n          \"n2\": {\n            \"conc\": 3052.964544700506,\n            \"aqius\": 1592,\n            \"aqicn\": 3388\n          },\n          \"s2\": {\n            \"conc\": 3597.9549784990195,\n            \"aqius\": 9716,\n            \"aqicn\": 7241\n          },\n          \"co\": {\n            \"conc\": 5719.674361103897,\n            \"aqius\": 928,\n            \"aqicn\": 9552\n          }\n        },\n        {\n          \"ts\": \"1971-01-17T04:39:09.227Z\",\n          \"aqius\": 6377,\n          \"mainus\": \"string\",\n          \"aqicn\": 8059,\n          \"maincn\": \"string\",\n          \"p2\": {\n            \"conc\": 4671.338505668858,\n            \"aqius\": 4913,\n            \"aqicn\": 3292\n          },\n          \"p1\": {\n            \"conc\": 6710.791818963776,\n            \"aqius\": 4625,\n            \"aqicn\": 7125\n          },\n          \"o3\": {\n            \"conc\": 1925.863973401325,\n            \"aqius\": 3278,\n            \"aqicn\": 3593\n          },\n          \"n2\": {\n            \"conc\": 5864.705861953366,\n            \"aqius\": 9464,\n            \"aqicn\": 5868\n          },\n          \"s2\": {\n            \"conc\": 6350.386210643745,\n            \"aqius\": 617,\n            \"aqicn\": 8760\n          },\n          \"co\": {\n            \"conc\": 232.01544597440395,\n            \"aqius\": 411,\n            \"aqicn\": 7364\n          }\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0dc0da6b-b990-4aa2-9d33-793572d1a10d",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "city"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "Los Angeles"
+                    },
+                    {
+                      "key": "state",
+                      "value": "California"
+                    },
+                    {
+                      "key": "country",
+                      "value": "USA"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"fail\",\n  \"data\": {\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d10bc17-7016-412b-9b2d-40fa0e12bc83",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "city"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "Los Angeles"
+                    },
+                    {
+                      "key": "state",
+                      "value": "California"
+                    },
+                    {
+                      "key": "country",
+                      "value": "USA"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"fail\",\n  \"data\": {\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e055c877-e622-4234-a082-81643a036842",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "city"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "Los Angeles"
+                    },
+                    {
+                      "key": "state",
+                      "value": "California"
+                    },
+                    {
+                      "key": "country",
+                      "value": "USA"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"fail\",\n  \"data\": {\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e8cc64c9-2225-4235-9a4c-87d5d5ec0f9b",
+          "name": "Get nearest city air quality data",
+          "request": {
+            "name": "Get nearest city air quality data",
+            "description": {
+              "content": "Returns air quality data for the nearest city based on IP geolocation or provided GPS coordinates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "nearest_city"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) Your API key"
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<double>",
+                  "description": "Latitude coordinate. If not provided, IP-based geolocation is used."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<double>",
+                  "description": "Longitude coordinate. If not provided, IP-based geolocation is used."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c9732a54-d8d8-44ef-9c97-16ed2bca7d1d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nearest_city"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "34.0522"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "-118.2437"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"country\": \"string\",\n    \"location\": {\n      \"type\": \"Point\",\n      \"coordinates\": [\n        -118.2437,\n        34.0522\n      ]\n    },\n    \"current\": {\n      \"weather\": {\n        \"ts\": \"1957-06-30T16:47:19.752Z\",\n        \"tp\": 1200.0376959887915,\n        \"pr\": 6952.3832344756565,\n        \"hu\": 987.6860813638622,\n        \"ws\": 944.3634216466368,\n        \"wd\": 6396.549629707952,\n        \"ic\": \"string\"\n      },\n      \"pollution\": {\n        \"ts\": \"1961-10-05T21:56:35.950Z\",\n        \"aqius\": 5087,\n        \"mainus\": \"string\",\n        \"aqicn\": 4777,\n        \"maincn\": \"string\",\n        \"p2\": {\n          \"conc\": 946.0632808095337,\n          \"aqius\": 1966,\n          \"aqicn\": 9487\n        },\n        \"p1\": {\n          \"conc\": 4221.579831812652,\n          \"aqius\": 8122,\n          \"aqicn\": 2604\n        },\n        \"o3\": {\n          \"conc\": 7475.945362140425,\n          \"aqius\": 2041,\n          \"aqicn\": 6048\n        },\n        \"n2\": {\n          \"conc\": 2571.447742069173,\n          \"aqius\": 4408,\n          \"aqicn\": 5368\n        },\n        \"s2\": {\n          \"conc\": 8360.631636907416,\n          \"aqius\": 6506,\n          \"aqicn\": 3735\n        },\n        \"co\": {\n          \"conc\": 5152.714126623024,\n          \"aqius\": 8371,\n          \"aqicn\": 9550\n        }\n      }\n    },\n    \"forecasts\": [\n      {\n        \"ts\": \"1960-02-20T01:26:47.787Z\",\n        \"aqius\": 7541,\n        \"aqicn\": 7958,\n        \"tp\": 3118.4965068467727,\n        \"tp_min\": 1365.5433832983222,\n        \"pr\": 1377.505329561166,\n        \"hu\": 5244.7746101581715,\n        \"ws\": 157.80655824296554,\n        \"wd\": 4941.8863700135,\n        \"ic\": \"string\"\n      },\n      {\n        \"ts\": \"1990-03-06T02:36:02.782Z\",\n        \"aqius\": 1487,\n        \"aqicn\": 4551,\n        \"tp\": 8336.150639582405,\n        \"tp_min\": 269.68077343970776,\n        \"pr\": 8254.952357814,\n        \"hu\": 3310.1942055095224,\n        \"ws\": 8782.806433140378,\n        \"wd\": 8965.91475890537,\n        \"ic\": \"string\"\n      }\n    ],\n    \"history\": {\n      \"weather\": [\n        {\n          \"ts\": \"1991-03-28T07:35:02.004Z\",\n          \"tp\": 2309.51302248802,\n          \"pr\": 5989.015979116712,\n          \"hu\": 8061.865827727826,\n          \"ws\": 8987.620670383441,\n          \"wd\": 1628.805062430494,\n          \"ic\": \"string\"\n        },\n        {\n          \"ts\": \"2018-07-02T00:27:35.459Z\",\n          \"tp\": 6824.734118937379,\n          \"pr\": 8362.916569720282,\n          \"hu\": 1067.443855027531,\n          \"ws\": 9483.390888649134,\n          \"wd\": 1130.6403968668822,\n          \"ic\": \"string\"\n        }\n      ],\n      \"pollution\": [\n        {\n          \"ts\": \"1967-04-06T17:18:00.126Z\",\n          \"aqius\": 6087,\n          \"mainus\": \"string\",\n          \"aqicn\": 6240,\n          \"maincn\": \"string\",\n          \"p2\": {\n            \"conc\": 6864.659861539883,\n            \"aqius\": 3252,\n            \"aqicn\": 9869\n          },\n          \"p1\": {\n            \"conc\": 7680.410897297808,\n            \"aqius\": 5774,\n            \"aqicn\": 9338\n          },\n          \"o3\": {\n            \"conc\": 2801.580458158981,\n            \"aqius\": 2306,\n            \"aqicn\": 3364\n          },\n          \"n2\": {\n            \"conc\": 4985.09362151286,\n            \"aqius\": 3686,\n            \"aqicn\": 1956\n          },\n          \"s2\": {\n            \"conc\": 9847.203643276936,\n            \"aqius\": 5024,\n            \"aqicn\": 8056\n          },\n          \"co\": {\n            \"conc\": 362.7509302290088,\n            \"aqius\": 3789,\n            \"aqicn\": 4884\n          }\n        },\n        {\n          \"ts\": \"1993-03-01T12:20:32.262Z\",\n          \"aqius\": 6719,\n          \"mainus\": \"string\",\n          \"aqicn\": 4802,\n          \"maincn\": \"string\",\n          \"p2\": {\n            \"conc\": 2151.6299359737413,\n            \"aqius\": 2295,\n            \"aqicn\": 2436\n          },\n          \"p1\": {\n            \"conc\": 8760.680631901461,\n            \"aqius\": 6605,\n            \"aqicn\": 5623\n          },\n          \"o3\": {\n            \"conc\": 3309.692328535867,\n            \"aqius\": 5551,\n            \"aqicn\": 7390\n          },\n          \"n2\": {\n            \"conc\": 7074.639786272464,\n            \"aqius\": 9130,\n            \"aqicn\": 686\n          },\n          \"s2\": {\n            \"conc\": 4904.916241818484,\n            \"aqius\": 7409,\n            \"aqicn\": 1832\n          },\n          \"co\": {\n            \"conc\": 9851.461135003787,\n            \"aqius\": 544,\n            \"aqicn\": 3164\n          }\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "283d5538-2d7a-4ead-8b55-0ef4cda66ccf",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nearest_city"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "34.0522"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "-118.2437"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"fail\",\n  \"data\": {\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97190eef-b343-473c-aa3c-e2fa7afed6a6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nearest_city"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "34.0522"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "-118.2437"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"fail\",\n  \"data\": {\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "513c6936-8f08-46cf-8abf-b69a5a658d0e",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nearest_city"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "34.0522"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "-118.2437"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"fail\",\n  \"data\": {\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.airvisual.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "44a9e39d-2d85-4ba4-be9d-3961d09369c3",
+    "name": "IQAir AirVisual Cities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The IQAir AirVisual API provides real-time and forecast air quality and weather data worldwide. It offers endpoints for listing supported countries, states, and cities, retrieving air quality data for specific locations or nearest stations, and ranking cities by air quality index.\n\nContact Support:\n Name: IQAir",
+      "type": "text/plain"
+    }
+  }
+}

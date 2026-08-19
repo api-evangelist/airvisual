@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IQAir AirVisual Cities Rankings API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rankings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get city air quality ranking",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.airvisual.com/v2/city_ranking",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Your API key"
+              }
+            ]
+          },
+          "docs": "Returns a sorted array of major cities worldwide ranked from highest to lowest AQI."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

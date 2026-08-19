@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IQAir AirVisual Cities Stations API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List monitoring stations in a city",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.airvisual.com/v2/stations",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Your API key"
+              },
+              {
+                "name": "city",
+                "value": "",
+                "type": "query",
+                "description": "City name"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State name"
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Country name"
+              }
+            ]
+          },
+          "docs": "Returns a list of active air quality monitoring stations within a specified city."
+        },
+        {
+          "info": {
+            "name": "Get station air quality data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.airvisual.com/v2/station",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Your API key"
+              },
+              {
+                "name": "station",
+                "value": "",
+                "type": "query",
+                "description": "Station name"
+              },
+              {
+                "name": "city",
+                "value": "",
+                "type": "query",
+                "description": "City name"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State name"
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Country name"
+              }
+            ]
+          },
+          "docs": "Returns air quality and weather data for a specific monitoring station."
+        },
+        {
+          "info": {
+            "name": "Get nearest station air quality data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.airvisual.com/v2/nearest_station",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Your API key"
+              },
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude coordinate. If not provided, IP-based geolocation is used."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude coordinate. If not provided, IP-based geolocation is used."
+              }
+            ]
+          },
+          "docs": "Returns air quality data for the nearest monitoring station based on IP geolocation or provided GPS coordinates."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

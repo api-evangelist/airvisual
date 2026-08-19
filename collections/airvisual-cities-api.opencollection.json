@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IQAir AirVisual Cities API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List supported cities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.airvisual.com/v2/cities",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Your API key"
+              },
+              {
+                "name": "state",
+                "value": "California",
+                "type": "query",
+                "description": "State name"
+              },
+              {
+                "name": "country",
+                "value": "USA",
+                "type": "query",
+                "description": "Country name"
+              }
+            ]
+          },
+          "docs": "Returns a list of all supported cities within a specified state and country."
+        },
+        {
+          "info": {
+            "name": "Get city air quality data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.airvisual.com/v2/city",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Your API key"
+              },
+              {
+                "name": "city",
+                "value": "Los Angeles",
+                "type": "query",
+                "description": "City name"
+              },
+              {
+                "name": "state",
+                "value": "California",
+                "type": "query",
+                "description": "State name"
+              },
+              {
+                "name": "country",
+                "value": "USA",
+                "type": "query",
+                "description": "Country name"
+              }
+            ]
+          },
+          "docs": "Returns air quality and weather data for a specified city, including current conditions, forecasts, and history."
+        },
+        {
+          "info": {
+            "name": "Get nearest city air quality data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.airvisual.com/v2/nearest_city",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Your API key"
+              },
+              {
+                "name": "lat",
+                "value": "34.0522",
+                "type": "query",
+                "description": "Latitude coordinate. If not provided, IP-based geolocation is used."
+              },
+              {
+                "name": "lon",
+                "value": "-118.2437",
+                "type": "query",
+                "description": "Longitude coordinate. If not provided, IP-based geolocation is used."
+              }
+            ]
+          },
+          "docs": "Returns air quality data for the nearest city based on IP geolocation or provided GPS coordinates."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

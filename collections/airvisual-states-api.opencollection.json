@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IQAir AirVisual Cities States API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "States",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List supported states",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.airvisual.com/v2/states",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Your API key"
+              },
+              {
+                "name": "country",
+                "value": "USA",
+                "type": "query",
+                "description": "Country name"
+              }
+            ]
+          },
+          "docs": "Returns a list of all supported states within a specified country."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
