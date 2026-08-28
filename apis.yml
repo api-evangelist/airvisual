@@ -1,6 +1,18 @@
 aid: airvisual
 name: IQAir AirVisual
 description: IQAir AirVisual provides a real-time air quality REST API delivering PM2.5, PM10, AQI, weather data, and pollution forecasts for cities and GPS coordinates worldwide. The API aggregates data from over 80,000 ground-based sensors, satellite sources, and regulatory monitors, validated with AI-driven machine learning.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
