@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: IQAir AirVisual Cities API
   description: The IQAir AirVisual API provides real-time and forecast air quality and weather data worldwide. It offers endpoints for listing supported countries, states, and cities, retrieving air quality data for specific locations or nearest stations, and ranking cities by air quality index.
@@ -185,6 +185,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: fail
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              description: Error message
     CitiesResponse:
       type: object
       properties:
@@ -199,44 +211,26 @@ components:
               city:
                 type: string
                 description: City name
-    Pollution:
+    CityDataResponse:
       type: object
       properties:
-        ts:
+        status:
           type: string
-          format: date-time
-          description: Timestamp
+          example: success
+        data:
+          $ref: '#/components/schemas/CityData'
+    PollutantUnit:
+      type: object
+      properties:
+        conc:
+          type: number
+          description: Pollutant concentration
         aqius:
           type: integer
           description: AQI value based on US EPA standard
-        mainus:
-          type: string
-          description: Main pollutant for US AQI (p2=PM2.5, p1=PM10, o3=Ozone, n2=NO2, s2=SO2, co=CO)
         aqicn:
           type: integer
           description: AQI value based on China MEP standard
-        maincn:
-          type: string
-          description: Main pollutant for Chinese AQI
-        p2:
-          $ref: '#/components/schemas/PollutantUnit'
-        p1:
-          $ref: '#/components/schemas/PollutantUnit'
-        o3:
-          $ref: '#/components/schemas/PollutantUnit'
-        n2:
-          $ref: '#/components/schemas/PollutantUnit'
-        s2:
-          $ref: '#/components/schemas/PollutantUnit'
-        co:
-          $ref: '#/components/schemas/PollutantUnit'
-    Current:
-      type: object
-      properties:
-        weather:
-          $ref: '#/components/schemas/Weather'
-        pollution:
-          $ref: '#/components/schemas/Pollution'
     Forecast:
       type: object
       properties:
@@ -271,6 +265,62 @@ components:
         ic:
           type: string
           description: Weather icon code
+    Weather:
+      type: object
+      properties:
+        ts:
+          type: string
+          format: date-time
+          description: Timestamp
+        tp:
+          type: number
+          description: Temperature in Celsius
+        pr:
+          type: number
+          description: Atmospheric pressure in hPa
+        hu:
+          type: number
+          description: Humidity percentage
+        ws:
+          type: number
+          description: Wind speed in m/s
+        wd:
+          type: number
+          description: Wind direction as angle (N=0, E=90, S=180, W=270)
+        ic:
+          type: string
+          description: Weather icon code
+    Pollution:
+      type: object
+      properties:
+        ts:
+          type: string
+          format: date-time
+          description: Timestamp
+        aqius:
+          type: integer
+          description: AQI value based on US EPA standard
+        mainus:
+          type: string
+          description: Main pollutant for US AQI (p2=PM2.5, p1=PM10, o3=Ozone, n2=NO2, s2=SO2, co=CO)
+        aqicn:
+          type: integer
+          description: AQI value based on China MEP standard
+        maincn:
+          type: string
+          description: Main pollutant for Chinese AQI
+        p2:
+          $ref: '#/components/schemas/PollutantUnit'
+        p1:
+          $ref: '#/components/schemas/PollutantUnit'
+        o3:
+          $ref: '#/components/schemas/PollutantUnit'
+        n2:
+          $ref: '#/components/schemas/PollutantUnit'
+        s2:
+          $ref: '#/components/schemas/PollutantUnit'
+        co:
+          $ref: '#/components/schemas/PollutantUnit'
     CityData:
       type: object
       properties:
@@ -302,63 +352,13 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Pollution'
-    ErrorResponse:
+    Current:
       type: object
       properties:
-        status:
-          type: string
-          example: fail
-        data:
-          type: object
-          properties:
-            message:
-              type: string
-              description: Error message
-    CityDataResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: success
-        data:
-          $ref: '#/components/schemas/CityData'
-    PollutantUnit:
-      type: object
-      properties:
-        conc:
-          type: number
-          description: Pollutant concentration
-        aqius:
-          type: integer
-          description: AQI value based on US EPA standard
-        aqicn:
-          type: integer
-          description: AQI value based on China MEP standard
-    Weather:
-      type: object
-      properties:
-        ts:
-          type: string
-          format: date-time
-          description: Timestamp
-        tp:
-          type: number
-          description: Temperature in Celsius
-        pr:
-          type: number
-          description: Atmospheric pressure in hPa
-        hu:
-          type: number
-          description: Humidity percentage
-        ws:
-          type: number
-          description: Wind speed in m/s
-        wd:
-          type: number
-          description: Wind direction as angle (N=0, E=90, S=180, W=270)
-        ic:
-          type: string
-          description: Weather icon code
+        weather:
+          $ref: '#/components/schemas/Weather'
+        pollution:
+          $ref: '#/components/schemas/Pollution'
     GeoLocation:
       type: object
       properties:

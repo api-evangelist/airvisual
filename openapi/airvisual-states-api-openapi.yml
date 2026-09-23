@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: IQAir AirVisual Cities States API
+  title: IQAir AirVisual States API
   description: The IQAir AirVisual API provides real-time and forecast air quality and weather data worldwide. It offers endpoints for listing supported countries, states, and cities, retrieving air quality data for specific locations or nearest stations, and ranking cities by air quality index.
   version: 2.0.0
   contact:
