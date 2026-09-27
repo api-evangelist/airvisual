@@ -185,18 +185,136 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
+    CityData:
+      type: object
+      properties:
+        city:
+          type: string
+          description: City name
+        state:
+          type: string
+          description: State name
+        country:
+          type: string
+          description: Country name
+        location:
+          $ref: '#/components/schemas/GeoLocation'
+        current:
+          $ref: '#/components/schemas/Current'
+        forecasts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Forecast'
+        history:
+          type: object
+          properties:
+            weather:
+              type: array
+              items:
+                $ref: '#/components/schemas/Weather'
+            pollution:
+              type: array
+              items:
+                $ref: '#/components/schemas/Pollution'
+    CityDataResponse:
       type: object
       properties:
         status:
           type: string
-          example: fail
+          example: success
         data:
-          type: object
-          properties:
-            message:
-              type: string
-              description: Error message
+          $ref: '#/components/schemas/CityData'
+    Pollution:
+      type: object
+      properties:
+        ts:
+          type: string
+          format: date-time
+          description: Timestamp
+        aqius:
+          type: integer
+          description: AQI value based on US EPA standard
+        mainus:
+          type: string
+          description: Main pollutant for US AQI (p2=PM2.5, p1=PM10, o3=Ozone, n2=NO2, s2=SO2, co=CO)
+        aqicn:
+          type: integer
+          description: AQI value based on China MEP standard
+        maincn:
+          type: string
+          description: Main pollutant for Chinese AQI
+        p2:
+          $ref: '#/components/schemas/PollutantUnit'
+        p1:
+          $ref: '#/components/schemas/PollutantUnit'
+        o3:
+          $ref: '#/components/schemas/PollutantUnit'
+        n2:
+          $ref: '#/components/schemas/PollutantUnit'
+        s2:
+          $ref: '#/components/schemas/PollutantUnit'
+        co:
+          $ref: '#/components/schemas/PollutantUnit'
+    GeoLocation:
+      type: object
+      properties:
+        type:
+          type: string
+          description: GeoJSON type
+          example: Point
+        coordinates:
+          type: array
+          items:
+            type: number
+            format: double
+          description: Longitude and latitude coordinates
+          example:
+          - -118.2437
+          - 34.0522
+    Current:
+      type: object
+      properties:
+        weather:
+          $ref: '#/components/schemas/Weather'
+        pollution:
+          $ref: '#/components/schemas/Pollution'
+    PollutantUnit:
+      type: object
+      properties:
+        conc:
+          type: number
+          description: Pollutant concentration
+        aqius:
+          type: integer
+          description: AQI value based on US EPA standard
+        aqicn:
+          type: integer
+          description: AQI value based on China MEP standard
+    Weather:
+      type: object
+      properties:
+        ts:
+          type: string
+          format: date-time
+          description: Timestamp
+        tp:
+          type: number
+          description: Temperature in Celsius
+        pr:
+          type: number
+          description: Atmospheric pressure in hPa
+        hu:
+          type: number
+          description: Humidity percentage
+        ws:
+          type: number
+          description: Wind speed in m/s
+        wd:
+          type: number
+          description: Wind direction as angle (N=0, E=90, S=180, W=270)
+        ic:
+          type: string
+          description: Weather icon code
     CitiesResponse:
       type: object
       properties:
@@ -211,26 +329,18 @@ components:
               city:
                 type: string
                 description: City name
-    CityDataResponse:
+    ErrorResponse:
       type: object
       properties:
         status:
           type: string
-          example: success
+          example: fail
         data:
-          $ref: '#/components/schemas/CityData'
-    PollutantUnit:
-      type: object
-      properties:
-        conc:
-          type: number
-          description: Pollutant concentration
-        aqius:
-          type: integer
-          description: AQI value based on US EPA standard
-        aqicn:
-          type: integer
-          description: AQI value based on China MEP standard
+          type: object
+          properties:
+            message:
+              type: string
+              description: Error message
     Forecast:
       type: object
       properties:
@@ -265,116 +375,6 @@ components:
         ic:
           type: string
           description: Weather icon code
-    Weather:
-      type: object
-      properties:
-        ts:
-          type: string
-          format: date-time
-          description: Timestamp
-        tp:
-          type: number
-          description: Temperature in Celsius
-        pr:
-          type: number
-          description: Atmospheric pressure in hPa
-        hu:
-          type: number
-          description: Humidity percentage
-        ws:
-          type: number
-          description: Wind speed in m/s
-        wd:
-          type: number
-          description: Wind direction as angle (N=0, E=90, S=180, W=270)
-        ic:
-          type: string
-          description: Weather icon code
-    Pollution:
-      type: object
-      properties:
-        ts:
-          type: string
-          format: date-time
-          description: Timestamp
-        aqius:
-          type: integer
-          description: AQI value based on US EPA standard
-        mainus:
-          type: string
-          description: Main pollutant for US AQI (p2=PM2.5, p1=PM10, o3=Ozone, n2=NO2, s2=SO2, co=CO)
-        aqicn:
-          type: integer
-          description: AQI value based on China MEP standard
-        maincn:
-          type: string
-          description: Main pollutant for Chinese AQI
-        p2:
-          $ref: '#/components/schemas/PollutantUnit'
-        p1:
-          $ref: '#/components/schemas/PollutantUnit'
-        o3:
-          $ref: '#/components/schemas/PollutantUnit'
-        n2:
-          $ref: '#/components/schemas/PollutantUnit'
-        s2:
-          $ref: '#/components/schemas/PollutantUnit'
-        co:
-          $ref: '#/components/schemas/PollutantUnit'
-    CityData:
-      type: object
-      properties:
-        city:
-          type: string
-          description: City name
-        state:
-          type: string
-          description: State name
-        country:
-          type: string
-          description: Country name
-        location:
-          $ref: '#/components/schemas/GeoLocation'
-        current:
-          $ref: '#/components/schemas/Current'
-        forecasts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Forecast'
-        history:
-          type: object
-          properties:
-            weather:
-              type: array
-              items:
-                $ref: '#/components/schemas/Weather'
-            pollution:
-              type: array
-              items:
-                $ref: '#/components/schemas/Pollution'
-    Current:
-      type: object
-      properties:
-        weather:
-          $ref: '#/components/schemas/Weather'
-        pollution:
-          $ref: '#/components/schemas/Pollution'
-    GeoLocation:
-      type: object
-      properties:
-        type:
-          type: string
-          description: GeoJSON type
-          example: Point
-        coordinates:
-          type: array
-          items:
-            type: number
-            format: double
-          description: Longitude and latitude coordinates
-          example:
-          - -118.2437
-          - 34.0522
   securitySchemes:
     apiKey:
       type: apiKey
