@@ -56,18 +56,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: fail
-        data:
-          type: object
-          properties:
-            message:
-              type: string
-              description: Error message
     CityRankingResponse:
       type: object
       properties:
@@ -94,6 +82,18 @@ components:
                   current_aqi_cn:
                     type: integer
                     description: Current AQI based on China MEP standard
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: fail
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              description: Error message
   securitySchemes:
     apiKey:
       type: apiKey

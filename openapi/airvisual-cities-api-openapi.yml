@@ -185,45 +185,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    CityData:
-      type: object
-      properties:
-        city:
-          type: string
-          description: City name
-        state:
-          type: string
-          description: State name
-        country:
-          type: string
-          description: Country name
-        location:
-          $ref: '#/components/schemas/GeoLocation'
-        current:
-          $ref: '#/components/schemas/Current'
-        forecasts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Forecast'
-        history:
-          type: object
-          properties:
-            weather:
-              type: array
-              items:
-                $ref: '#/components/schemas/Weather'
-            pollution:
-              type: array
-              items:
-                $ref: '#/components/schemas/Pollution'
-    CityDataResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: success
-        data:
-          $ref: '#/components/schemas/CityData'
     Pollution:
       type: object
       properties:
@@ -271,6 +232,40 @@ components:
           example:
           - -118.2437
           - 34.0522
+    Forecast:
+      type: object
+      properties:
+        ts:
+          type: string
+          format: date-time
+          description: Timestamp
+        aqius:
+          type: integer
+          description: AQI value based on US EPA standard
+        aqicn:
+          type: integer
+          description: AQI value based on China MEP standard
+        tp:
+          type: number
+          description: Temperature in Celsius
+        tp_min:
+          type: number
+          description: Minimum temperature in Celsius
+        pr:
+          type: number
+          description: Atmospheric pressure in hPa
+        hu:
+          type: number
+          description: Humidity percentage
+        ws:
+          type: number
+          description: Wind speed in m/s
+        wd:
+          type: number
+          description: Wind direction as angle
+        ic:
+          type: string
+          description: Weather icon code
     Current:
       type: object
       properties:
@@ -278,6 +273,51 @@ components:
           $ref: '#/components/schemas/Weather'
         pollution:
           $ref: '#/components/schemas/Pollution'
+    CityData:
+      type: object
+      properties:
+        city:
+          type: string
+          description: City name
+        state:
+          type: string
+          description: State name
+        country:
+          type: string
+          description: Country name
+        location:
+          $ref: '#/components/schemas/GeoLocation'
+        current:
+          $ref: '#/components/schemas/Current'
+        forecasts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Forecast'
+        history:
+          type: object
+          properties:
+            weather:
+              type: array
+              items:
+                $ref: '#/components/schemas/Weather'
+            pollution:
+              type: array
+              items:
+                $ref: '#/components/schemas/Pollution'
+    CitiesResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              city:
+                type: string
+                description: City name
     PollutantUnit:
       type: object
       properties:
@@ -315,20 +355,6 @@ components:
         ic:
           type: string
           description: Weather icon code
-    CitiesResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: success
-        data:
-          type: array
-          items:
-            type: object
-            properties:
-              city:
-                type: string
-                description: City name
     ErrorResponse:
       type: object
       properties:
@@ -341,40 +367,14 @@ components:
             message:
               type: string
               description: Error message
-    Forecast:
+    CityDataResponse:
       type: object
       properties:
-        ts:
+        status:
           type: string
-          format: date-time
-          description: Timestamp
-        aqius:
-          type: integer
-          description: AQI value based on US EPA standard
-        aqicn:
-          type: integer
-          description: AQI value based on China MEP standard
-        tp:
-          type: number
-          description: Temperature in Celsius
-        tp_min:
-          type: number
-          description: Minimum temperature in Celsius
-        pr:
-          type: number
-          description: Atmospheric pressure in hPa
-        hu:
-          type: number
-          description: Humidity percentage
-        ws:
-          type: number
-          description: Wind speed in m/s
-        wd:
-          type: number
-          description: Wind direction as angle
-        ic:
-          type: string
-          description: Weather icon code
+          example: success
+        data:
+          $ref: '#/components/schemas/CityData'
   securitySchemes:
     apiKey:
       type: apiKey
