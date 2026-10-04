@@ -185,6 +185,52 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    PollutantUnit:
+      type: object
+      properties:
+        conc:
+          type: number
+          description: Pollutant concentration
+        aqius:
+          type: integer
+          description: AQI value based on US EPA standard
+        aqicn:
+          type: integer
+          description: AQI value based on China MEP standard
+    CitiesResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              city:
+                type: string
+                description: City name
+    CityDataResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        data:
+          $ref: '#/components/schemas/CityData'
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: fail
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              description: Error message
     Pollution:
       type: object
       properties:
@@ -232,6 +278,37 @@ components:
           example:
           - -118.2437
           - 34.0522
+    CityData:
+      type: object
+      properties:
+        city:
+          type: string
+          description: City name
+        state:
+          type: string
+          description: State name
+        country:
+          type: string
+          description: Country name
+        location:
+          $ref: '#/components/schemas/GeoLocation'
+        current:
+          $ref: '#/components/schemas/Current'
+        forecasts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Forecast'
+        history:
+          type: object
+          properties:
+            weather:
+              type: array
+              items:
+                $ref: '#/components/schemas/Weather'
+            pollution:
+              type: array
+              items:
+                $ref: '#/components/schemas/Pollution'
     Forecast:
       type: object
       properties:
@@ -273,63 +350,6 @@ components:
           $ref: '#/components/schemas/Weather'
         pollution:
           $ref: '#/components/schemas/Pollution'
-    CityData:
-      type: object
-      properties:
-        city:
-          type: string
-          description: City name
-        state:
-          type: string
-          description: State name
-        country:
-          type: string
-          description: Country name
-        location:
-          $ref: '#/components/schemas/GeoLocation'
-        current:
-          $ref: '#/components/schemas/Current'
-        forecasts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Forecast'
-        history:
-          type: object
-          properties:
-            weather:
-              type: array
-              items:
-                $ref: '#/components/schemas/Weather'
-            pollution:
-              type: array
-              items:
-                $ref: '#/components/schemas/Pollution'
-    CitiesResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: success
-        data:
-          type: array
-          items:
-            type: object
-            properties:
-              city:
-                type: string
-                description: City name
-    PollutantUnit:
-      type: object
-      properties:
-        conc:
-          type: number
-          description: Pollutant concentration
-        aqius:
-          type: integer
-          description: AQI value based on US EPA standard
-        aqicn:
-          type: integer
-          description: AQI value based on China MEP standard
     Weather:
       type: object
       properties:
@@ -355,26 +375,6 @@ components:
         ic:
           type: string
           description: Weather icon code
-    ErrorResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: fail
-        data:
-          type: object
-          properties:
-            message:
-              type: string
-              description: Error message
-    CityDataResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: success
-        data:
-          $ref: '#/components/schemas/CityData'
   securitySchemes:
     apiKey:
       type: apiKey
