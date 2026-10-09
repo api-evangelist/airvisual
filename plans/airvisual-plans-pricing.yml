@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: IQAir AirVisual API Plans and Pricing
 description: Subscription plans for the IQAir AirVisual air quality data API, covering real-time AQI, weather, pollution, and forecast data worldwide.
 url: https://www.iqair.com/us/air-pollution-data-api
@@ -65,3 +69,28 @@ plans:
         period: day
       - calls: 10000000
         period: month
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - negotiated
+  units: []
+  plans:
+  - name: Community
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Startup
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
