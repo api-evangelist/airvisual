@@ -63,18 +63,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: fail
-        data:
-          type: object
-          properties:
-            message:
-              type: string
-              description: Error message
     StatesResponse:
       type: object
       properties:
@@ -89,6 +77,18 @@ components:
               state:
                 type: string
                 description: State name
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: fail
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              description: Error message
   securitySchemes:
     apiKey:
       type: apiKey

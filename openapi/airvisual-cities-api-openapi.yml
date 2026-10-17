@@ -185,52 +185,22 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    PollutantUnit:
+    GeoLocation:
       type: object
       properties:
-        conc:
-          type: number
-          description: Pollutant concentration
-        aqius:
-          type: integer
-          description: AQI value based on US EPA standard
-        aqicn:
-          type: integer
-          description: AQI value based on China MEP standard
-    CitiesResponse:
-      type: object
-      properties:
-        status:
+        type:
           type: string
-          example: success
-        data:
+          description: GeoJSON type
+          example: Point
+        coordinates:
           type: array
           items:
-            type: object
-            properties:
-              city:
-                type: string
-                description: City name
-    CityDataResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: success
-        data:
-          $ref: '#/components/schemas/CityData'
-    ErrorResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: fail
-        data:
-          type: object
-          properties:
-            message:
-              type: string
-              description: Error message
+            type: number
+            format: double
+          description: Longitude and latitude coordinates
+          example:
+          - -118.2437
+          - 34.0522
     Pollution:
       type: object
       properties:
@@ -262,22 +232,64 @@ components:
           $ref: '#/components/schemas/PollutantUnit'
         co:
           $ref: '#/components/schemas/PollutantUnit'
-    GeoLocation:
+    Weather:
       type: object
       properties:
-        type:
+        ts:
           type: string
-          description: GeoJSON type
-          example: Point
-        coordinates:
+          format: date-time
+          description: Timestamp
+        tp:
+          type: number
+          description: Temperature in Celsius
+        pr:
+          type: number
+          description: Atmospheric pressure in hPa
+        hu:
+          type: number
+          description: Humidity percentage
+        ws:
+          type: number
+          description: Wind speed in m/s
+        wd:
+          type: number
+          description: Wind direction as angle (N=0, E=90, S=180, W=270)
+        ic:
+          type: string
+          description: Weather icon code
+    Current:
+      type: object
+      properties:
+        weather:
+          $ref: '#/components/schemas/Weather'
+        pollution:
+          $ref: '#/components/schemas/Pollution'
+    CitiesResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        data:
           type: array
           items:
-            type: number
-            format: double
-          description: Longitude and latitude coordinates
-          example:
-          - -118.2437
-          - 34.0522
+            type: object
+            properties:
+              city:
+                type: string
+                description: City name
+    PollutantUnit:
+      type: object
+      properties:
+        conc:
+          type: number
+          description: Pollutant concentration
+        aqius:
+          type: integer
+          description: AQI value based on US EPA standard
+        aqicn:
+          type: integer
+          description: AQI value based on China MEP standard
     CityData:
       type: object
       properties:
@@ -343,38 +355,26 @@ components:
         ic:
           type: string
           description: Weather icon code
-    Current:
+    CityDataResponse:
       type: object
       properties:
-        weather:
-          $ref: '#/components/schemas/Weather'
-        pollution:
-          $ref: '#/components/schemas/Pollution'
-    Weather:
+        status:
+          type: string
+          example: success
+        data:
+          $ref: '#/components/schemas/CityData'
+    ErrorResponse:
       type: object
       properties:
-        ts:
+        status:
           type: string
-          format: date-time
-          description: Timestamp
-        tp:
-          type: number
-          description: Temperature in Celsius
-        pr:
-          type: number
-          description: Atmospheric pressure in hPa
-        hu:
-          type: number
-          description: Humidity percentage
-        ws:
-          type: number
-          description: Wind speed in m/s
-        wd:
-          type: number
-          description: Wind direction as angle (N=0, E=90, S=180, W=270)
-        ic:
-          type: string
-          description: Weather icon code
+          example: fail
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              description: Error message
   securitySchemes:
     apiKey:
       type: apiKey
